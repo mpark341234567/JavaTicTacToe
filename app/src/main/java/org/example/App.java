@@ -9,24 +9,10 @@ public class App {
   public static void main(String[] args) {
     TicTacToeBoard board = new TicTacToeBoard();
     Scanner scanner = new Scanner(System.in);
-    InputHandler inputHandler = new InputHandler();
+    InputHandler inputHandler = new InputHandler(scanner);
     TurnManagement turnManagement = new TurnManagement();
-    System.out.println("Welcome to Tic Tac Toe!\n");
-    String userInput;
-    do{//could put this into a play game class?
-      PrintBoard.printBoard(board.getBoard()); 
-      while (true){
-        System.out.println("What is your move? (1-9) ");
-        userInput = scanner.nextLine();
-        if (inputHandler.isValidInput(userInput)) {
-          int position = Integer.parseInt(userInput);
-          board.addToBoard(position, turnManagement.getWhosTurn());
-          turnManagement.SwitchTurn();
-          break;
-        } 
-    
-    }
-    }while (!CheckWin.IsGameDone(board.getBoard()));
+    GameController gameController = new GameController(board, inputHandler, turnManagement);
+    gameController.playGame();
     scanner.close();
   }
 }

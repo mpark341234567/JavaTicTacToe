@@ -7,7 +7,7 @@ public class TurnManagement {//manages which turn it is
 
     public void setWhosTurn(char whosTurn) { WhosTurn = whosTurn; }
 
-    public void SwitchTurn() {
+    public void switchTurn() {
         if (WhosTurn == 'X') { WhosTurn = 'O'; }
         else { WhosTurn = 'X'; }
     } 

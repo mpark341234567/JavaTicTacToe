@@ -1,19 +1,25 @@
 package org.example;
-// import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class InputHandler {//handles invalid inputs and user inputs
+    private Scanner scanner;
     private ArrayList<String> availableInputs = new ArrayList<>();
-    // public boolean playerTurn(TicTacToeBoard board, Scanner scanner){
-    //     String userInput;
-    //     while (true){
-    //         System.out.println("What is your move? (1-9) ");
-    //         userInput = scanner.nextLine();
-    //         if (isValidInput(userInput)) {
-    //         return true;
-    //     } 
-    // }
-    // }
+
+    public InputHandler(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public int getInput() {
+        String userInput;
+        while (true) {
+            System.out.println("What is your move? (1-9) ");
+            userInput = scanner.nextLine();
+            if (isValidInput(userInput)) {
+                return Integer.parseInt(userInput);
+        }
+    }
+}
 
     public boolean isValidInput(String input){
         switch (input) {

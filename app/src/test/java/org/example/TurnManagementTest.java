@@ -8,10 +8,10 @@ public class TurnManagementTest {
 void SwitchTurnWorks() {
     TurnManagement turnManagement = new TurnManagement();
     turnManagement.setWhosTurn('X');
-    turnManagement.SwitchTurn();
+    turnManagement.switchTurn();
     assertEquals('O', turnManagement.getWhosTurn(), "SwitchTurn should change turn from X to O");
     
-    turnManagement.SwitchTurn();
+    turnManagement.switchTurn();
     assertEquals('X', turnManagement.getWhosTurn(), "SwitchTurn should change turn from O to X");
   }
 }

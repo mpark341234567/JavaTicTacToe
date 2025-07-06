@@ -3,10 +3,13 @@ package org.example;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Scanner;
+
 public class CheckWinTest {
 @Test
 void isValidInputWorks() {
-    InputHandler inputHandler = new InputHandler();
+    Scanner scanner = new Scanner(System.in);
+    InputHandler inputHandler = new InputHandler(scanner);
 
     // Test valid inputs
     assertTrue(inputHandler.isValidInput("1"), "isValidInput should return true for valid input '1'");
