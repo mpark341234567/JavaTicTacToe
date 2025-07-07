@@ -1,7 +1,7 @@
 package org.example;
 
 public class TurnManagement {//manages which turn it is
-    public char WhosTurn = 'X';
+    private char WhosTurn = 'X';
 
     public char getWhosTurn() { return WhosTurn; }
 

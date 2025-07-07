@@ -20,7 +20,8 @@ public class TicTacToeBoard {//holds and keeps track of board
     public void clearBoard() {
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
-                board[i][j] = ' ';
+                int temp = (3 * i) + j + 1;
+                board[i][j] = (char) (temp + '0'); // Convert int to char
             }
         }
     }

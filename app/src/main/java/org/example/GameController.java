@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class GameController {
     private TicTacToeBoard board;
     private InputHandler inputHandler;
@@ -20,6 +22,18 @@ public class GameController {
             break;
             } 
         }while (!CheckWin.IsGameDone(board.getBoard()));
-        
+        replayGame();
         }
+    public void replayGame() {
+        System.out.println("Would you like to play again? (Y/N)");
+        if (inputHandler.getInputReplay().equals("Y")) {
+            board.clearBoard();
+            turnManagement.setWhosTurn('X');
+            inputHandler.setAvailableInputs(new ArrayList<String>());
+            playGame();
+        }
+        else {
+            System.out.println("Thanks for playing!");
+        }
+    }
 }

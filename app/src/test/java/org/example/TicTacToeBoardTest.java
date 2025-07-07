@@ -22,12 +22,14 @@ void AddToBoardWorks() {
 @Test
 void ClearBoardWorks() {
     TicTacToeBoard board = new TicTacToeBoard();
-    char[][] testBoard = board.getBoard();
+    char[][] testBoard = {{'1','2','3'},
+                          {'4','5','6'},
+                          {'7','8','9'}};
     
     // Fill the board with some values
-    testBoard[0][0] = 'X';
-    testBoard[1][1] = 'O';
-    testBoard[2][2] = 'X';
+    board.addToBoard(1, 'X');
+    board.addToBoard(2, 'O');
+    board.addToBoard(3, 'X');
     
     // Clear the board
     board.clearBoard();
@@ -35,7 +37,7 @@ void ClearBoardWorks() {
     // Check if the board is cleared
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
-        assertEquals(' ', testBoard[i][j], "clearBoard should reset all positions to empty");
+        assertEquals(testBoard[i][j], (board.getBoard())[i][j], "clearBoard should reset all positions to numeric values");
       }
     }
   }

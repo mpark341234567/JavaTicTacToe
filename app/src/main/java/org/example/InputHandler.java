@@ -10,6 +10,10 @@ public class InputHandler {//handles invalid inputs and user inputs
         this.scanner = scanner;
     }
 
+    public void setAvailableInputs(ArrayList<String> availableInputs) {
+        this.availableInputs = availableInputs;
+    }
+
     public int getInput() {
         String userInput;
         while (true) {
@@ -20,6 +24,18 @@ public class InputHandler {//handles invalid inputs and user inputs
         }
     }
 }
+
+    public String getInputReplay() {
+        String userInput;
+        while (true) {
+            userInput = scanner.nextLine().trim();
+            if (isValidReplayInput(userInput)) {
+                return userInput.toUpperCase();
+            } else {
+                System.out.println("\nInvalid input! Please enter 'Y' or 'N'.\n");
+            }
+        }
+    }
 
     public boolean isValidInput(String input){
         switch (input) {
@@ -37,5 +53,14 @@ public class InputHandler {//handles invalid inputs and user inputs
                 return false;
             }
         }
+    }
+
+    public boolean isValidReplayInput(String input) {
+        String check = input.toUpperCase();
+        //System.out.println("You entered: " + check);
+        if ((check.equals("Y") ) || (check.equals("N"))){
+            return true;
+        } else { return false; }
+        
     }
 }

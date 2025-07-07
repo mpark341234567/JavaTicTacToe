@@ -3,26 +3,32 @@ package org.example;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Scanner;
-
 public class CheckWinTest {
 @Test
-void isValidInputWorks() {
-    Scanner scanner = new Scanner(System.in);
-    InputHandler inputHandler = new InputHandler(scanner);
-
-    // Test valid inputs
-    assertTrue(inputHandler.isValidInput("1"), "isValidInput should return true for valid input '1'");
-    assertTrue(inputHandler.isValidInput("5"), "isValidInput should return true for valid input '5'");
+void IsGameDoneWorks() {
+    TicTacToeBoard board = new TicTacToeBoard();
+    char[][] testBoard = board.getBoard();
     
-    // Test invalid inputs
-    assertFalse(inputHandler.isValidInput("10"), "isValidInput should return false for invalid input '10'");
-    assertFalse(inputHandler.isValidInput("0"), "isValidInput should return false for invalid input '0'");
-    assertFalse(inputHandler.isValidInput(" "), "isValidInput should return false for non-numeric input ' '");
-    assertFalse(inputHandler.isValidInput(""), "isValidInput should return false for non-numeric input ''");
-    assertFalse(inputHandler.isValidInput("a"), "isValidInput should return false for non-numeric input 'a'");
-
-    // Test already used inputs
-    assertFalse(inputHandler.isValidInput("1"), "isValidInput should return false for already used input '3'");
+    // Test for a win condition
+    testBoard[0][0] = 'X';
+    testBoard[0][1] = 'X';
+    testBoard[0][2] = 'X';
+    assertTrue(CheckWin.IsGameDone(testBoard), "IsGameDone should return true for a winning condition");
+    
+    // Reset the board
+    board.clearBoard();
+    
+    // Test for a draw condition
+    testBoard[0][0] = 'X';
+    testBoard[0][1] = 'O';
+    testBoard[0][2] = 'X';
+    testBoard[1][0] = 'O';
+    testBoard[1][1] = 'X';
+    testBoard[1][2] = 'O';
+    testBoard[2][0] = 'O';
+    testBoard[2][1] = 'X';
+    testBoard[2][2] = 'O';
+    
+    assertTrue(CheckWin.IsGameDone(testBoard), "IsGameDone should return true for a draw condition");
   }
 }
