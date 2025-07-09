@@ -52,6 +52,8 @@ public class GameController {
         }
         else {
             System.out.println("Thanks for playing!");
+            System.out.println("Writing game log to 'game.txt'. Check 'game.txt' to see your stats!");
+            StatsWriter.writeToFile(stats);
         }
     }
 }
