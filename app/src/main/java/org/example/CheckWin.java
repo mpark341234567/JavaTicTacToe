@@ -1,27 +1,27 @@
 package org.example;
 
 public class CheckWin {//checks for valid win condition
-    public static boolean IsGameDone(char [][] board) {
+    public static int IsGameDone(char [][] board){ 
         if (HasPlayerWon(board, 'X')){
             PrintBoard.printBoard(board);
             System.out.println("Player X has won!");
-            return true;
+            return 0;
         }
         else if (HasPlayerWon(board, 'O')){
             PrintBoard.printBoard(board);
             System.out.println("Player O has won!");
-            return true;
+            return 1;
         }
         for (int i = 0; i < board.length; i++){
             for (int j = 0; j < board[i].length; j++){
                 if ((board[i][j] != 'X') && (board[i][j] != 'O')) {
-                    return false; 
+                    return -1; 
                 }
             }
         }
         PrintBoard.printBoard(board);
         System.out.println("The game is a draw!");
-        return true; 
+        return 2; 
     }
 
     private static boolean HasPlayerWon(char[][] board, char player) {

@@ -11,7 +11,9 @@ public class App {
     Scanner scanner = new Scanner(System.in);
     InputHandler inputHandler = new InputHandler(scanner);
     TurnManagement turnManagement = new TurnManagement();
-    GameController gameController = new GameController(board, inputHandler, turnManagement);
+    Stats stats = new Stats();
+    GameController gameController = new GameController(board, inputHandler, turnManagement, stats);
+    System.out.println("Welcome to Tic Tac Toe!\n");
     gameController.playGame();
     scanner.close();
   }
