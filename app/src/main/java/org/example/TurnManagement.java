@@ -11,6 +11,7 @@ public class TurnManagement {//manages which turn it is
     public void switchTurn() {
         if (WhosTurn == 'X') { WhosTurn = 'O'; }
         else { WhosTurn = 'X'; }
+        turnCount++;
     } 
 
     public void incrementTurnCount() {
@@ -19,5 +20,9 @@ public class TurnManagement {//manages which turn it is
 
     public int getTurnCount() {
         return turnCount;
+    }
+
+    public void resetTurnCount() {
+        turnCount = 0;
     }
 }

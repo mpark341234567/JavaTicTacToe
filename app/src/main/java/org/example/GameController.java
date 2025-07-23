@@ -17,22 +17,26 @@ public class GameController {
     }
     public void playGame() {
         result = -1;
+        PrintBoard.printBoard(board.getBoard()); 
         do{
-            PrintBoard.printBoard(board.getBoard()); 
             int position = inputHandler.getInput();
             board.addToBoard(position, turnManagement.getWhosTurn());
             turnManagement.switchTurn();
             result = CheckWin.IsGameDone(board.getBoard());
+            PrintBoard.printBoard(board.getBoard()); 
         }while (result == -1);
 
         if (result == 0) {
+                CheckWin.XWinMessage();
                 turnManagement.setWhosTurn('O');
                 stats.incrementXWins();
             } else if (result == 1) {
+                CheckWin.OWinMessage();
                 turnManagement.setWhosTurn('X');
                 stats.incrementOWins();
             }
             else {
+                CheckWin.TieMessage();
                 stats.incrementTies();
             }
         PrintStats.printStats(stats);
@@ -44,6 +48,7 @@ public class GameController {
         if (inputHandler.getInputReplay().equals("Y")) {
             board.clearBoard();
             inputHandler.setAvailableInputs(new ArrayList<String>());
+            turnManagement.resetTurnCount();
             if (gameType == 1) {//player vs player
             playGame();
             }
@@ -64,11 +69,12 @@ public class GameController {
     }
 
     public void playVsComputer(ComputerPlayer com) {
+        int result = -1;
+        PrintBoard.printBoard(board.getBoard());
         do {
-            PrintBoard.printBoard(board.getBoard());
             char currentTurn = turnManagement.getWhosTurn();
             if (com.getComputerMark() == currentTurn) {
-                int position = com.getMove(board.getBoard(),(turnManagement.getTurnCount() == 2),board.isBoardEmpty());
+                int position = com.getMove(board.getBoard(),((turnManagement.getTurnCount() == 2) || (turnManagement.getTurnCount() == 3)),board.isBoardEmpty());
                 System.out.println("Computer is moving...");
                 board.addToBoard(position, turnManagement.getWhosTurn());
             } else {
@@ -76,15 +82,20 @@ public class GameController {
                 board.addToBoard(position, turnManagement.getWhosTurn());
             }
             turnManagement.switchTurn();
-        } while (CheckWin.IsGameDone(board.getBoard()) == -1);
+            result = CheckWin.IsGameDone(board.getBoard());
+            PrintBoard.printBoard(board.getBoard());
+        } while (result == -1);
 
-        if (CheckWin.IsGameDone(board.getBoard()) == 0) {
+        if (result == 0) {
+            CheckWin.XWinMessage();
             turnManagement.setWhosTurn('O');
             stats.incrementXWins();
-        } else if (CheckWin.IsGameDone(board.getBoard()) == 1) {
+        } else if (result == 1) {
+            CheckWin.OWinMessage();
             turnManagement.setWhosTurn('X');
             stats.incrementOWins();
         } else {
+            CheckWin.TieMessage();
             stats.incrementTies();
         }
         PrintStats.printStats(stats);

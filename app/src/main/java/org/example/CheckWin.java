@@ -3,13 +3,9 @@ package org.example;
 public class CheckWin {//checks for valid win condition
     public static int IsGameDone(char [][] board){ 
         if (HasPlayerWon(board, 'X')){
-            PrintBoard.printBoard(board);
-            System.out.println("Player X has won!");
             return 0;
         }
         else if (HasPlayerWon(board, 'O')){
-            PrintBoard.printBoard(board);
-            System.out.println("Player O has won!");
             return 1;
         }
         for (int i = 0; i < board.length; i++){
@@ -19,9 +15,19 @@ public class CheckWin {//checks for valid win condition
                 }
             }
         }
-        PrintBoard.printBoard(board);
-        System.out.println("The game is a draw!");
         return 2; 
+    }
+
+    public static void TieMessage() {
+        System.out.println("The game is a draw!");
+    }
+
+    public static void OWinMessage() {
+        System.out.println("Player O has won!");
+    }
+
+    public static void XWinMessage() {
+        System.out.println("Player X has won!");
     }
 
     private static boolean HasPlayerWon(char[][] board, char player) {
@@ -39,4 +45,5 @@ public class CheckWin {//checks for valid win condition
         }
         else { return false; }
     }
+
 }

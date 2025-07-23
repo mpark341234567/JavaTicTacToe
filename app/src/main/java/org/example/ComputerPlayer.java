@@ -13,12 +13,12 @@ public class ComputerPlayer {
         this.OpponentMark = opponentMark;
     }
 
-    public int getMove(char[][] board, boolean isSecondTurn, boolean isBoardEmpty) {
-        if (isBoardEmpty) {
-            return getCornerMove(); // First move, choose a corner
+    public int getMove(char[][] board, boolean isComputersSecondTurn, boolean isBoardEmpty) {
+        if ((isComputersSecondTurn) && (board[1][1] == '5')) {
+            return 5; // Second move, take center if available
         }
-        else if ((isSecondTurn) && (board[1][1] == '5')) {
-            return 5; // Second turn, take the center if available
+        else if (isBoardEmpty) {
+            return getCornerMove(); // First turn, take corner if board is empty
         }
         int winningMove = getWinningMove(board, ComputerMark);
         if (winningMove != -1) {
