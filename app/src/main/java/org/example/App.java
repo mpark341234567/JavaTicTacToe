@@ -14,7 +14,7 @@ public class App {
     Stats stats = new Stats();
     GameController gameController = new GameController(board, inputHandler, turnManagement, stats);
     System.out.println("Welcome to Tic Tac Toe!\n");
-    gameController.playGame();
+    gameController.chooseGame();
     scanner.close();
   }
 }

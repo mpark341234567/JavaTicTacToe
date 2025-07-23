@@ -63,4 +63,17 @@ public class InputHandler {//handles invalid inputs and user inputs
         } else { return false; }
         
     }
+
+    public int getGameType() {
+        String userInput;
+        while (true) {
+            System.out.println("Choose game type:\n1: Player vs Player\n2: Computer vs Player\n3: Player vs Computer");
+            userInput = scanner.nextLine();
+            if (userInput.equals("1") || userInput.equals("2") || userInput.equals("3")) {
+                return Integer.parseInt(userInput);
+            } else {
+                System.out.println("\nInvalid input! Please enter '1','2', or '3'.\n");
+            }
+        }
+    }
 }
