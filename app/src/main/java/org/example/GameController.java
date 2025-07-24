@@ -76,6 +76,7 @@ public class GameController {
             if (com.getComputerMark() == currentTurn) {
                 int position = com.getMove(board.getBoard(),((turnManagement.getTurnCount() == 2) || (turnManagement.getTurnCount() == 3)),board.isBoardEmpty());
                 System.out.println("Computer is moving...");
+                inputHandler.addToAvailableInputs(Integer.toString(position));
                 board.addToBoard(position, turnManagement.getWhosTurn());
             } else {
                 int position = inputHandler.getInput();

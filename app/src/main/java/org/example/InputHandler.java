@@ -14,6 +14,10 @@ public class InputHandler {//handles invalid inputs and user inputs
         this.availableInputs = availableInputs;
     }
 
+    public void addToAvailableInputs(String input){
+        availableInputs.add(input);
+    }
+
     public int getInput() {
         String userInput;
         while (true) {
